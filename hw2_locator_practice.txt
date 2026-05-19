@@ -1,0 +1,39 @@
+Automation Homework 2
+
+Locators Practice
+
+Amazon Logo -- use XPATH "//i[@aria-label='Amazon']"
+	driver.find_element(By.XPATH, "//i[@aria-label='Amazon']")
+
+Email Field -- search by ID, "ap_email_login"
+	driver.find_element(By.ID, "ap_email_login")
+
+Button Input -- search by CSS selector, input with attribute aria-labelledby='continue-announce'
+	driver.find_element(By.CSS_SELECTOR, "input[aria-labelledby='continue-announce']")
+
+Conditions of use link -- search by link text "Conditions of Use"
+	driver.find_element(By.LINK_TEXT, "Conditions of Use")
+	there's more than one link to the conditions of use page, but this will still see if at least one is found
+
+Privacy Notice link -- search by link text "Privacy Notice"
+	driver.find_element(By.LINK_TEXT, "Privacy Notice")
+	there's more than one link to the Privacy Notice page, but this will still see if at least one is found
+
+Need help link -- search by link text "Need help?"
+	driver.find_element(By.LINK_TEXT, "Need help?")
+	or this, to cover the case of the lowercase "help" button at the bottom
+	driver.find_element(By.PARTIAL_LINK_TEXT, "elp")
+
+These last three don't show up when I go to the Amazon sign in page, maybe it was updated.
+I am indeed on an incognito window. And in the video recording it's not there either.
+But if I were to guess, the locators would be:
+
+Forgot your password link
+	driver.find_element(By.LINK_TEXT, "Forgot your password?")
+
+Other issues with Sign-In link
+	driver.find_element(By.LINK_TEXT, "Other issues with Sign-In")
+
+Create your Amazon account button
+	driver.find_element(By.CSS_SELECTOR, "input[aria-labelledby='continue-announce']")
+	except instead of " aria-labelledby='continue-announce' "  it would be whatever attribute that uniquely identifies the "Create your Amazon account" button input
