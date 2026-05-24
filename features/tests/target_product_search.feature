@@ -1,16 +1,22 @@
-Feature: Test cases for Target
+Feature: Test cases for Target product search
 
-#  Scenario: User can search for a product on Target
-#    Given Open Target main page
-#    When Search for coffee
-#    Then Verify search results for coffee shown
-
-  Scenario: Clicking empty cart sends a message
+  Scenario: User can search for a product "tea" on Target
     Given Open Target main page
-    When Cart icon is clicked
-    Then Cart empty message is shown
+    When Search for tea
+    Then Verify search results for tea shown
 
-  Scenario: Clicking Sign In opens sign in form
+  Scenario: User can search for a product "coffee" on Target
     Given Open Target main page
-    When Sign In is clicked
-    Then Sign In form opens
+    When Search for coffee
+    Then Verify search results for coffee shown
+
+  Scenario Outline: User can search for products
+    Given Open Target main page
+    When Search for <search_query>
+    Then Verify search results for <product> shown
+    Examples:
+    |search_query  |product     |
+    |coffee        |coffee      |
+    |coffee cup    |coffee cup  |
+    |sugar         |sugar       |
+
