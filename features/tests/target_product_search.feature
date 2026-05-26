@@ -20,3 +20,15 @@ Feature: Test cases for Target product search
     |coffee cup    |coffee cup  |
     |sugar         |sugar       |
 
+  Scenario Outline: User can search for a color
+    Given Open shirt page
+    Then Give search results for <color>
+    Examples:
+    |color |
+    |black |
+    |blue  |
+    |white |
+    |gray  |
+    |pink  |
+
+
