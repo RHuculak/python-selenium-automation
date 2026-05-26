@@ -10,4 +10,3 @@ def open_target_page(context, path):
     if path == MAIN_PAGE:
         path = ""
     context.driver.get(f'https://www.target.com/{path}')
-    sleep(3)
