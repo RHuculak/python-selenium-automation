@@ -6,6 +6,8 @@ from time import sleep
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from pages.header import Header
+
 CART_ICON = (By.CSS_SELECTOR, "a[href*='/cart']")
 SEARCH_FIELD = (By.ID, 'search')
 SEARCH_BUTTON = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
@@ -18,22 +20,22 @@ CLOSE_BUTTON = (By.CSS_SELECTOR, "button[aria-label='close']")
 
 @when("Cart icon is clicked")
 def click_cart_icon(context):
-    # driver.wait = DRIVER_WAIT
-    # context.driver.wait = WebDriverWait(context.driver, 10)
-    context.driver.wait.until(
-        EC.element_to_be_clickable(CART_ICON), message='not clickable'
-    ).click()
+    # context.driver.wait.until(
+    #     EC.element_to_be_clickable(CART_ICON), message='not clickable'
+    # ).click()
+    context.app.header.click_cart_icon()
     sleep(3)
     # context.driver.find_element(*CART_ICON).click()
 
 @when("Search for {search_query}")
 def search_product(context, search_query):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(search_query)
-    # context.driver.wait = WebDriverWait(context.driver, 10)
-    context.driver.wait.until(
-        EC.element_to_be_clickable(SEARCH_BUTTON), message='not clickable'
-    ).click()
-    # context.driver.find_element(*SEARCH_BUTTON).click()
+    # context.driver.find_element(*SEARCH_FIELD).send_keys(search_query)
+    # # context.driver.wait = WebDriverWait(context.driver, 10)
+    # context.driver.wait.until(
+    #     EC.element_to_be_clickable(SEARCH_BUTTON), message='not clickable'
+    # ).click()
+    # # context.driver.find_element(*SEARCH_BUTTON).click()
+    context.app.header.search(search_query) #add search_query functionality in header.py
 
 @when("Product is added to cart")
 def add_to_cart(context):

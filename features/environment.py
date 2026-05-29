@@ -3,7 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
-
+from app.application import Application
 
 
 def browser_init(context):
@@ -14,9 +14,6 @@ def browser_init(context):
     service = Service(driver_path)
     options = Options()
     options.add_argument("--incognito")
-    # # 1 = Allow, 2 = Block location prompts globally
-    # prefs = {"profile.default_content_setting_values.geolocation": 2}
-    # options.add_experimental_option("prefs", prefs)
 
     context.driver = webdriver.Chrome(service=service, options=options)
 
@@ -25,6 +22,7 @@ def browser_init(context):
     # driver.wait?
     context.driver.wait = WebDriverWait(context.driver, 10)
 
+    context.app = Application(context.driver)
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)

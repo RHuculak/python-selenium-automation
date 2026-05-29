@@ -5,9 +5,10 @@ SEARCH_RESULT_COUNT_TEXT = (By.XPATH, "//div[contains(@class, 'styles_resultCoun
 
 @then("Verify search results for {search_query} shown")
 def verify_search_results(context, search_query):
-    expected_result = search_query
-    actual_result = context.driver.find_element(*SEARCH_RESULT_COUNT_TEXT).text
-    assert expected_result in actual_result, f'Expected "{expected_result}" not in actual "{actual_result}"'
+    # actual_result = context.driver.find_element(*SEARCH_RESULT_COUNT_TEXT).text
+    # assert search_query in actual_result, \
+    #     f'Expected "{search_query}" not in actual "{actual_result}"'
+    context.app.search_results.verify_search_results(search_query) # add search_query functionality
 
 @then("Give search results for {color}")
 def verify_color_search_results(context, color):

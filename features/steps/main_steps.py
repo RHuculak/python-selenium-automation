@@ -10,7 +10,8 @@ COLOR_TEST_PAGE = "https://www.target.com/p/men-s-performance-dress-standard-fit
 def open_target_page(context, path):
     if path == MAIN_PAGE:
         path = ""
-    context.driver.get(f'https://www.target.com/{path}')
+    # context.driver.get(f'https://www.target.com/{path}')
+    context.app.page.open_url(path)
 
 @given("Open shirt page")
 def open_shirt_page(context):
